@@ -26,7 +26,7 @@ function Header() {
           <p className="nav-item">Product</p>
           <p className="nav-item">Customers</p>
           <p className="nav-item">Pricing</p>
-          <p className="nav-item">Resouces</p>
+          <p className="nav-item">Resources</p>
           {/* </div> */}
 
           <button className="secondary-button">Sign in</button>
