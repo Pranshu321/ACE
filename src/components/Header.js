@@ -1,9 +1,37 @@
 import React from "react";
 import "../index.css";
 import { MenuIcon } from "@heroicons/react/solid";
+import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
+import { auth } from "../firebase/firebase";
+import { useNavigate } from "react-router-dom";
 
 function Header() {
   // const navItems = [];
+  const navi = useNavigate();
+  const GoogleLogin = () => {
+    const provider = new GoogleAuthProvider();
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const credential = GoogleAuthProvider.credentialFromResult(result);
+        const token = credential.accessToken;
+        navi("/dashboard");
+        // The signed-in user info.
+        const user = result.user;
+        // IdP data available using getAdditionalUserInfo(result)
+        // ...
+      })
+      .catch((error) => {
+        // Handle Errors here.
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        // The email of the user's account used.
+        const email = error.customData.email;
+        // The AuthCredential type that was used.
+        const credential = GoogleAuthProvider.credentialFromError(error);
+        // ...
+      });
+  };
 
   return (
     <header className="container flex justify-between shadow-md md:shadow-none h-20 ">
@@ -29,8 +57,9 @@ function Header() {
           <p className="nav-item">Resouces</p>
           {/* </div> */}
 
-          <button className="secondary-button">Sign in</button>
-          <button className="primary-button">Sign up</button>
+          <button onClick={GoogleLogin} className="primary-button">
+            Login With Google
+          </button>
         </div>
       </div>
     </header>
