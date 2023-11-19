@@ -12,11 +12,11 @@ function Hero() {
        {/* text section */}
       <div className="text-center sm:text-left md:max-w-[40%]">
         <h1 className="font-bold text-4xl leading-[60px]">
-          Work at the speed of thought
+          Transforming Learning, Empowering Minds and Elevating Research
         </h1>
+        {/* Can use typed here */}
         <p className="mt-4 text-[18px] leading-[28px] font-normal">
-          Tools, tutorials, design and innovation experts, all in one place! The
-          most intuitive way to imagine your next user experience.
+        Embark on a journey towards academic excellence with the perfect blend of quality and convenience
         </p>
         <div className="mt-8 flex items-center justify-around sm:justify-start sm:space-x-8">
           <button className="primary-button">Get Started</button>

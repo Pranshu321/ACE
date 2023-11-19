@@ -23,9 +23,9 @@ function Header() {
         <MenuIcon className="h-10 md:hidden" />
         <div className="hidden md:flex items-center space-x-3 lg:space-x-8">
           {/* <div className="hidden max-w-xl md:grid gap-4 grid-cols-4 text-right"> */}
-          <p className="nav-item">Product</p>
-          <p className="nav-item">Customers</p>
-          <p className="nav-item">Pricing</p>
+          {/* <p className="nav-item">Product</p>
+          <p className="nav-item">Customers</p> */}
+          <p className="nav-item">About Us</p>
           <p className="nav-item">Resources</p>
           {/* </div> */}
 
