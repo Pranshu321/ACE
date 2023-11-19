@@ -9,7 +9,7 @@ import Feature from "./FeatureItem";
 
 function Features() {
   return (
-    <section className="container mt-24 flex flex-col items-center">
+    <section id="features" className="container mt-24 flex flex-col items-center">
       <h2 className="text-[32px] font-bold text-center sm:text-left">
         Our Unique Features
       </h2>
