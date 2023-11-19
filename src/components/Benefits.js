@@ -6,55 +6,50 @@ function Benefits() {
   return (
     <section className="container mt-24 space-y-24">
       <BenefitItem
-        image="./images/benefit-1.svg"
-        heading1="Effortless Validation for"
-        heading2="Management"
-        description="The Myspace page defines the individual, his or her characteristics,
-      traits, personal choices and the overall personality of the person."
-        Content={() => (
-          <div>
-            <h5 className="mt-6 mb-2 font-semibold">Accessory makers</h5>
-            <p>
-              While most people enjoy casino gambling, sports betting, lottery
-              and bingo playing for the fun
-            </p>
-            <h5 className="mt-6 mb-2 font-semibold">Alterationists</h5>
-            <p>
-              If you are looking for a new way to promote your business that
-              won’t cost you more money,
-            </p>
-          </div>
-        )}
-      />
-
-      <BenefitItem
         image="./images/benefit-2.svg"
-        heading1="Easier decision making for"
-        heading2="Customer Support"
-        description="The Myspace page defines the individual, his or her characteristics, traits, personal choices and the overall personality of the person. "
+        heading1="Accurate and Automated"
+        heading2="Quality Assessment"
+        description="Utilizes a powerful machine learning model to automatically evaluate academic resources based on diverse parameters, ensuring rigorous and objective analysis."
         Content={() => (
           <div className="flex flex-col space-y-6">
             <CheckedItem
               bgColor="#FF9900"
-              text="Never worry about overpaying for your energy again."
+              text="Seamless platform designed for easy uploading, exploration, and engagement with academic materials"
             />
             <CheckedItem
               bgColor="#F03E3D"
-              text="We will only switch you to energy companies that we trust and will treat you right"
+              text="Assigns detailed quality labels to each resource for accurate overview of its reliability and educational value."
             />
             <CheckedItem
               bgColor="#4D8DFF"
-              text="We track the markets daily and know where the savings are."
+              text="Offers valuable real-time insights through user reviews, views, and ratings."
             />
           </div>
         )}
       />
-
       <BenefitItem
+        image="./images/benefit-1.svg"
+        heading1="Optimised"
+        heading2="Organization"
+        description="Academic materials are careful selected, organized, and managed for increased productivity of the user."
+        Content={() => (
+          <div>
+            <h5 className="mt-6 mb-2 font-semibold">Systematic Arrangement </h5>
+            <p>
+            Academic materials undergo meticulous curation, ensuring a systematic arrangement that facilitates efficient navigation and quick retrieval.
+            </p>
+            <h5 className="mt-6 mb-2 font-semibold">Enhanced Accessibility</h5>
+            <p>
+            Provides streamlined access to relevant resources, promoting a seamless and productive research or study experience.
+            </p>
+          </div>
+        )}
+      />
+      {/* <BenefitItem
         image="./images/benefit-3.svg"
-        heading1="Optimisation for"
-        heading2="Collaborative"
-        description="Few would argue that, despite the advancements of feminism over the past three decades, women still face a double standard when it comes to their behavior. "
+        heading1="Optimised"
+        heading2="Organization"
+        description="Academic materials are careful selected, organized, and managed for increased productivity of the user."
         Content={() => (
           <div>
             <h5 className="mt-6 mb-2 font-semibold">Accessory makers</h5>
@@ -69,7 +64,7 @@ function Benefits() {
             </p>
           </div>
         )}
-      />
+      /> */}
     </section>
   );
 }

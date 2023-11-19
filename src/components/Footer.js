@@ -31,7 +31,7 @@ function Footer() {
         </div>
 
         <div>
-          <h6 className="font-medium text-xl mb-4">Legal Stuff</h6>
+          <h6 className="font-medium text-xl mb-4">Policies</h6>
           <Link text="Disclaimer"/>
           <Link text="Financing"/>
           <Link text="Privacy Policy"/>
@@ -40,13 +40,13 @@ function Footer() {
 
         <div className="lg:col-span-2">
           <h6 className="font-medium text-xl">
-            knowing you're always on the best energy deal.
+            Subscribe to our newsletter
           </h6>
           <div className="mt-9 border border-[#BCD0E5] rounded-md text-left">
             <input
               className="w-full p-2 bg-transparent outline-none"
               type="tel"
-              placeholder="Enter your phone Number"
+              placeholder="Enter your email"
             />
           </div>
           <button className="primary-button mt-6">Sign up Now</button>
@@ -54,7 +54,7 @@ function Footer() {
       </div>
 
       <p className="text-center mt-12">
-        Made With Love By Product All Right Reserved
+          ACE. All Right Reserved
       </p>
     </div>
   );
