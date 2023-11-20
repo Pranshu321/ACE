@@ -4,6 +4,7 @@ import axios from "axios";
 import qs from "qs";
 import toast from "react-hot-toast";
 
+
 const PlagrismChecker = () => {
   const [loading, setloading] = useState(true);
   const [searched, setSearched] = useState(false);
@@ -11,6 +12,7 @@ const PlagrismChecker = () => {
 
   const [text, setText] = useState("");
   const handleButtonClick = async () => {
+    // console.log(process.env.REACT_APP_PLAG_KEY);
     if (text === "") {
       toast.error("Please, write something");
       return;
@@ -23,7 +25,7 @@ const PlagrismChecker = () => {
       const response = await axios.post(
         "https://www.prepostseo.com/apis/checkPlag",
         qs.stringify({
-          key: "b29bcafd0c1b06b09bb84f6841072cf0",
+          key: `${process.env.REACT_APP_PLAG_KEY}`,
           data: text,
         }),
         {

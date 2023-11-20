@@ -9,7 +9,7 @@ const Dashboard = () => {
   const getFact = async () => {
     const res = await axios.get("https://api.api-ninjas.com/v1/riddles", {
       headers: {
-        "X-Api-Key": "U31IhnCZM/hn2E36raGqKA==EUAaC7RQmhYqZqTU",
+        "X-Api-Key": `${process.env.REACT_APP_FACT_KEY}`,
       },
     });
     setdata(res.data);
