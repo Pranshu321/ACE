@@ -13,21 +13,21 @@ function Testimonials() {
         <TestimonialItem
           name="Nina Watson"
           designation="Computer Science Student"
-          userImg="./images/user-1.jpg"
+          userImg="./images/user-1.jpeg"
           rating={4}
           testimonial="This platform has been a game-changer for my research journey. The detailed evaluations and quality labels have saved me countless hours, ensuring I invest my time in the most valuable and reliable resources."
         />
         <TestimonialItem
           name="Janice Harrison"
           designation="Professor, CSE Department"
-          userImg="./images/user-2.jpg"
+          userImg="./images/user-2.jpeg"
           rating={3}
           testimonial="I am always on the lookout for tools that can enhance the learning experience for my students. This platform provides a valuable benchmark for ensuring the materials we recommend meet the highest standards of quality."
         />
         <TestimonialItem
           name="Amy Adams"
           designation="Researcher"
-          userImg="./images/user-3.jpg"
+          userImg="./images/user-3.jpeg"
           rating={4}
           testimonial="The automated assessments, readability scores, and user reviews have become indispensable in my quest for reliable and high-quality resources. It's like having a personal research assistant at my fingertips!"
         />
