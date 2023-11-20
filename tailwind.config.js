@@ -7,6 +7,9 @@ module.exports = {
     "node_modules/preline/dist/*.js",
   ],
   darkMode: false, // or 'media' or 'class'
+  daisyui: {
+    darkTheme: "light",
+  },
   theme: {
     extend: {
       colors: {
@@ -22,5 +25,9 @@ module.exports = {
   variants: {
     extend: {},
   },
-  plugins: [require("@tailwindcss/aspect-ratio"), require("preline/plugin")],
+  plugins: [
+    require("@tailwindcss/aspect-ratio"),
+    require("preline/plugin"),
+    require("daisyui"),
+  ],
 };

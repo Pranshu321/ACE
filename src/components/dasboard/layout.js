@@ -1,10 +1,11 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLayoutEffect } from "react";
 import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase/firebase";
 import { HiBars4 } from "react-icons/hi2";
 import { CiLogout } from "react-icons/ci";
+import { Toaster } from "react-hot-toast";
 
 const Layout = ({ children }) => {
   const router = useNavigate();
@@ -23,6 +24,32 @@ const Layout = ({ children }) => {
   }, []);
   return (
     <div className="flex flex-row w-full justify-center items-stretch">
+      <Toaster
+        position="top-center"
+        reverseOrder={false}
+        gutter={8}
+        containerClassName=""
+        containerStyle={{}}
+        toastOptions={{
+          // Define default options
+          className: "",
+          duration: 5000,
+          style: {
+            background: "#fffff",
+            color: "teal",
+            fontWeight: "600"
+          },
+
+          // Default options for specific types
+          success: {
+            duration: 3000,
+            theme: {
+              primary: "green",
+              secondary: "white",
+            },
+          },
+        }}
+      />
       <div>
         <button
           type="button"
@@ -53,9 +80,9 @@ const Layout = ({ children }) => {
           >
             <ul class="space-y-1.5">
               <li>
-                <a
+                <Link
                   class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-300 text-sm text-slate-700 rounded-lg hover:bg-gray-200"
-                  href="#"
+                  to={"/dashboard"}
                 >
                   <svg
                     class="w-4 h-4"
@@ -73,7 +100,7 @@ const Layout = ({ children }) => {
                     <polyline points="9 22 9 12 15 12 15 22" />
                   </svg>
                   Dashboard
-                </a>
+                </Link>
               </li>
               <li>
                 <a
@@ -99,9 +126,9 @@ const Layout = ({ children }) => {
                 </a>
               </li>
               <li>
-                <a
+                <Link
                   class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200 "
-                  href="#"
+                  to={"/dashboard/recent"}
                 >
                   <svg
                     class="w-4 h-4"
@@ -127,7 +154,7 @@ const Layout = ({ children }) => {
                     <path d="M16 18h.01" />
                   </svg>
                   Recent Docs
-                </a>
+                </Link>
               </li>
 
               {/* <li class="hs-accordion" id="users-accordion">
@@ -485,12 +512,12 @@ const Layout = ({ children }) => {
                 >
                   <ul class="pt-2 ps-2">
                     <li>
-                      <a
+                      <Link
                         class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200 "
-                        href="#"
+                        to="/dashboard/plagrism"
                       >
                         Check Plagrism
-                      </a>
+                      </Link>
                     </li>
                     <li>
                       <a

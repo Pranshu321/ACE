@@ -53,7 +53,9 @@ function Header() {
           {/* <div className="hidden max-w-xl md:grid gap-4 grid-cols-4 text-right"> */}
           {/* <p className="nav-item">Product</p>
           <p className="nav-item">Customers</p> */}
-          <p className="nav-item">About Us</p>
+          <a href="#features" className="scroll-smooth nav-item">
+            About Us
+          </a>
           <p className="nav-item">Resources</p>
           {/* </div> */}
 
