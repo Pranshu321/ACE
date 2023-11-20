@@ -37,7 +37,7 @@ function Header() {
     <header className="container flex justify-between shadow-md md:shadow-none h-20 ">
       <img
         className="md:hidden lg:inline-flex"
-        src="./images/logo-full.svg"
+        src="./images/logo.svg"
         alt=""
         width="180"
       />

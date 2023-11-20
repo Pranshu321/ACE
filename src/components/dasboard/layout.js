@@ -103,9 +103,9 @@ const Layout = ({ children }) => {
                 </Link>
               </li>
               <li>
-                <a
+                <Link
                   class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200 "
-                  href="#"
+                  to={"/dashboard/evaluator"}
                 >
                   <svg
                     class="w-4 h-4"
@@ -123,7 +123,7 @@ const Layout = ({ children }) => {
                     <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
                   </svg>
                   ACE Evaluator
-                </a>
+                </Link>
               </li>
               <li>
                 <Link
