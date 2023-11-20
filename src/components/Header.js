@@ -3,7 +3,7 @@ import "../index.css";
 import { MenuIcon } from "@heroicons/react/solid";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "../firebase/firebase";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Header() {
   // const navItems = [];
@@ -35,18 +35,20 @@ function Header() {
 
   return (
     <header className="container flex justify-between shadow-md md:shadow-none h-20 ">
-      <img
-        className="md:hidden lg:inline-flex"
-        src="./images/logo.svg"
-        alt=""
-        width="180"
-      />
-      <img
-        className="hidden md:inline-block lg:hidden"
-        src="./images/logo.svg"
-        alt=""
-        width="45"
-      />
+      <Link to={"/"}>
+        <img
+          className="w-52 -mt-7 h-40 scale-125 md:hidden lg:block"
+          src="./images/logo_ace.png"
+          alt=""
+        />
+        <img
+          className="hidden md:inline-block lg:hidden"
+          src="./images/logo_ace.png"
+          alt=""
+          width="45"
+        />
+      </Link>
+
       <div className="flex items-center">
         <MenuIcon className="h-10 md:hidden" />
         <div className="hidden md:flex items-center space-x-3 lg:space-x-8">

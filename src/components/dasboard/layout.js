@@ -71,7 +71,7 @@ const Layout = ({ children }) => {
               href="#"
               aria-label="Brand"
             >
-              ACE
+              ACE Dashboard
             </a>
           </div>
           <nav
@@ -544,7 +544,7 @@ const Layout = ({ children }) => {
           </nav>
         </div>
       </div>
-      <div className="w-full min-h-screen border-teal-600 border-2 m-4 ml-2 p-3">
+      <div className="w-full min-h-[97vh] border-gray-200 rounded-2xl border-4 mx-4 my-2 ml-2 p-3">
         {children}
       </div>
     </div>
