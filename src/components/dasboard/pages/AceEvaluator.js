@@ -101,46 +101,84 @@ const AceEvaluator = () => {
     
         <div className="flex justify-between mt-8">
           <div className="flex flex-col flex-1 mr-4">
-            
+
+
+            <div className="stats shadow flex flex-col w-2/3 m-4">
+
+              <div className="stat">
+                <div className="stat-figure text-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                </div>
+                <div className="stat-title">Downloads</div>
+                <div className="stat-value">31K</div>
+                <div className="stat-desc">Jan 1st - Feb 1st</div>
+              </div>
+              
+              <div className="stat ">
+                <div className="stat-figure text-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path></svg>
+                </div>
+                <div className="stat-title">New Users</div>
+                <div className="stat-value">4,200</div>
+                <div className="stat-desc">↗︎ 400 (22%)</div>
+              </div>
+              
+              <div className="stat ">
+                <div className="stat-figure text-secondary">
+                  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" className="inline-block w-8 h-8 stroke-current"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 8h14M5 8a2 2 0 110-4h14a2 2 0 110 4M5 8v10a2 2 0 002 2h10a2 2 0 002-2V8m-9 4h4"></path></svg>
+                </div>
+                <div className="stat-title">New Registers</div>
+                <div className="stat-value">1,200</div>
+                <div className="stat-desc">↘︎ 90 (14%)</div>
+              </div>
+                
+            </div>
+
+
           </div>
     
           <div className="flex flex-col flex-1">
             <h2 className="text-lg font-medium mb-2">Total rating :</h2>
             <div className="w-1/2">
               <CircularProgressbar value={score} text={`${score}%`} styles={{
-        // Customize the root svg element
-        root: {},
-        // Customize the path, i.e. the "completed progress"
-        path: {
-          // Path color
-          stroke: `rgba(2, 137, 122, ${score / 100})`,
-          // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-          strokeLinecap: 'butt',
-          // Customize transition animation
-          transition: 'stroke-dashoffset 0.5s ease 0s',
-          
-        },
-        // Customize the circle behind the path, i.e. the "total progress"
-        trail: {
-          // Trail color
-          stroke: '#d6d6d6',
-          // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
-          strokeLinecap: 'butt',
-        },
-        // Customize the text
-        text: {
-          // Text color
-          fill: '#000',
-          // Text size
-          fontSize: '16px',
-        },
-      }} />
+                // Customize the root svg element
+                root: {},
+                // Customize the path, i.e. the "completed progress"
+                path: {
+                  // Path color
+                  stroke: `rgba(2, 137, 122, ${score / 100})`,
+                  // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                  strokeLinecap: 'butt',
+                  // Customize transition animation
+                  transition: 'stroke-dashoffset 0.5s ease 0s',
+                  
+                },
+                // Customize the circle behind the path, i.e. the "total progress"
+                trail: {
+                // Trail color
+                stroke: '#d6d6d6',
+                // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
+                strokeLinecap: 'butt',
+                },
+                // Customize the text
+                text: {
+                  // Text color
+                  fill: '#000',
+                  // Text size
+                  fontSize: '16px',
+                },
+              }} />
             </div>
-            <h1 className="text-xl mt-4">The total rating of the document is: {score / 10}/10</h1>
+            <h1 className="text-lg mt-4">The total rating of the document is: {score / 10}/10</h1>
           </div>
         </div>
 
-        <button onClick={handleCheckAnother}>Check Another</button>
+        <button 
+          className="bg-teal-500 text-white rounded-md py-2 px-4 mt-4 m-1 " 
+          onClick={handleCheckAnother}
+          >
+            Check Another Resource
+          </button>
     
       </Layout>
       )
@@ -149,9 +187,9 @@ const AceEvaluator = () => {
   return (
     <Layout>
       <div>
-        <h1>Enter details of resource to be evaluated: </h1>
+        <h1 className="text-2xl font-bold mb-4">Enter details of resource to be evaluated: </h1>
         
-      <label className="block mb-2">
+      <label className="font-semibold block mb-2">
           Author:
           <input
             type="text"
@@ -165,7 +203,7 @@ const AceEvaluator = () => {
           />
         </label>
 
-        <label className="block mb-2">
+        <label className="block font-semibold mb-2">
           Publication:
           <input
             name="publication"
@@ -178,8 +216,8 @@ const AceEvaluator = () => {
           />
         </label>
 
-        <label>
-          Upload file:
+        <label >
+          <span className="block font-semibold">Upload file:</span>
           <input 
             type="file"
             onChange={(event) => {
@@ -190,15 +228,15 @@ const AceEvaluator = () => {
         <button
           onClick={handleClickUpload}
           type="submit"
-          className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
+          className=" text-white bg-teal-500 rounded-md py-2 px-4 mt-4 m-1"
         >
           Upload
         </button>
 
-        <h1> OR </h1>
+        <h1 className="block font-bold mb-2"> OR </h1>
 
         <label className="block mb-2">
-          Resource URL:
+        <span className="block font-semibold">Resource URL:</span>
           <input
             name="link"
             value={link}
@@ -212,9 +250,9 @@ const AceEvaluator = () => {
     
         <button 
           onClick={handleClickShow}
-          className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
+          className="bg-teal-500 text-white rounded-md py-2 px-4 mt-4 m-1"
         >
-          Show
+          Find Score
         </button>
     
       </div>
