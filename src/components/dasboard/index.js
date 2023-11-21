@@ -14,9 +14,9 @@ const Dashboard = () => {
     });
     setdata(res.data);
   };
-  useEffect(() => {
-    getFact();
-  }, []);
+  // useEffect(() => {
+  //   getFact();
+  // }, []);
   return (
     <>
       <Layout>
