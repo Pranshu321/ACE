@@ -20,15 +20,27 @@ import { v4 } from 'uuid';
 const AceEvaluator = () => {
 
   const [loading, setLoading] = useState(false);
-  const [showResult, setShowResult] = useState(false);
+
+  const [author, setAuthor] = useState("")
+  const [publication, setPublication] = useState("")
+  //either link
+  const [link, setLink] = useState("")
+//or file is uploaded
   const [fileUpload, setFileUpload] = useState(null);
-
+  const [fileUrl, setFileUrl] = useState("")
+  
+  const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(50)
-  const [fileUrl, setFileUrl] = useState("");
-
-
 
   const handleClickShow = () => {
+    if(link){
+      //create entry in firestore database
+      
+    }
+    if(fileUrl){
+      //create entry in firestore database
+    }
+
     setShowResult(!showResult);
   }
 
@@ -50,19 +62,15 @@ const AceEvaluator = () => {
       })
       .then((url) => {
         setFileUrl(url);
-        console.log(url); // Log the URL here, as it will be available
+        //console.log(url); // Log the URL here, as it will be available
       })
       .catch((error) => {
         console.error('Error uploading file:', error);
       });
-
-      //create entry in firestore database
-      
-
-  };
+  }
   
   
-  if(showResult) {
+  if(!showResult) {
     return (
       <Layout>
     
@@ -120,12 +128,74 @@ const AceEvaluator = () => {
   return (
     <Layout>
       <div>
-        <h1>Just testing</h1>
-        <label>Upload file :<input type="file" onChange={(event) => {setFileUpload(event.target.files[0])}}/></label>
-        <button onClick={handleClickUpload}>Upload</button>
-        <button onClick={handleClickShow}>Show</button>
+        <h1>Enter details of resource to be evaluated: </h1>
         
+      <label className="block mb-2">
+          Author:
+          <input
+            type="text"
+            name="author"
+            value={author}
+            onChange={(event) => {
+              setAuthor(event.target.value);
+            }}
+            placeholder="Enter author"
+            className="block w-full mt-1 p-2 border rounded-md"
+          />
+        </label>
 
+        <label className="block mb-2">
+          Publication:
+          <input
+            name="publication"
+            value={publication}
+            onChange={(event) => {
+              setPublication(event.target.value);
+            }}
+            placeholder="Enter Publication"
+            className="block w-full mt-1 p-2 border rounded-md"
+          />
+        </label>
+
+        <label>
+          Upload file:
+          <input 
+            type="file"
+            onChange={(event) => {
+              setFileUpload(event.target.files[0])
+              }}/>
+        </label>
+
+        <button
+          onClick={handleClickUpload}
+          type="submit"
+          className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
+        >
+          Upload
+        </button>
+
+        <h1> OR </h1>
+
+        <label className="block mb-2">
+          Resource URL:
+          <input
+            name="link"
+            value={link}
+            onChange={(event) => {
+              setLink(event.target.value);
+            }}
+            placeholder="Enter Resource URL"
+            className="block w-full mt-1 p-2 border rounded-md"
+          />
+        </label>
+    
+        <button 
+          onClick={handleClickShow}
+          className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
+        >
+          Show
+        </button>
+    
       </div>
     </Layout>
   )
