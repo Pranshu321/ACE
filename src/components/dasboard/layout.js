@@ -516,7 +516,7 @@ const Layout = ({ children }) => {
                         class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200 "
                         to="/dashboard/plagrism"
                       >
-                        Check Plagrism
+                        Check Plagiarism
                       </Link>
                     </li>
                     <li>

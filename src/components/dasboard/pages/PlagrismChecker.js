@@ -111,14 +111,14 @@ const PlagrismChecker = () => {
           {Object.keys(obj).length > 0 && (
             <div className="flex flex-col gap-y-4 my-10">
               <h1 className="text-3xl font-bold text-gray-700">
-                Plagrized Content
+                Plagiarized Content
               </h1>
               {obj.details.map((item, idx) => (
                 <div
                   key={idx}
                   className="text-sm text-white font-semibold bg-gray-800 w-full rounded-lg p-6"
                 >
-                  <h2 className="text-base text-red-600">Plagrized</h2>
+                  <h2 className="text-base text-red-600">Plagiarized</h2>
                   {item.query}
                   <h2 className="text-base mt-2 text-green-600">Original</h2>
                   {item.display.des.slice(15)}
