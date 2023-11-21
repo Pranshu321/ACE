@@ -37,7 +37,7 @@ const Layout = ({ children }) => {
           style: {
             background: "#fffff",
             color: "teal",
-            fontWeight: "600"
+            fontWeight: "600",
           },
 
           // Default options for specific types
@@ -81,7 +81,7 @@ const Layout = ({ children }) => {
             <ul class="space-y-1.5">
               <li>
                 <Link
-                  class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-300 text-sm text-slate-700 rounded-lg hover:bg-gray-200"
+                  class="flex items-center gap-x-3.5 py-2 px-2.5 bg-gray-200 text-sm text-slate-700 rounded-lg"
                   to={"/dashboard"}
                 >
                   <svg
@@ -104,7 +104,7 @@ const Layout = ({ children }) => {
               </li>
               <li>
                 <Link
-                  class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200 "
+                  class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200"
                   to={"/dashboard/evaluator"}
                 >
                   <svg
@@ -520,12 +520,12 @@ const Layout = ({ children }) => {
                       </Link>
                     </li>
                     <li>
-                      <a
+                      <Link
                         class="flex items-center gap-x-3.5 py-2 px-2.5 text-sm text-slate-700 rounded-lg hover:bg-gray-200 "
-                        href="#"
+                        to={"/dashboard/grammar"}
                       >
                         Check Grammar
-                      </a>
+                      </Link>
                     </li>
                   </ul>
                 </div>
