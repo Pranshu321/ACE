@@ -42,7 +42,7 @@ const PlagrismChecker = () => {
   };
   return (
     <Layout>
-      <div>
+      <div className="p-4">
         <div>
           <label
             for="textarea-label-with-helper-text"
