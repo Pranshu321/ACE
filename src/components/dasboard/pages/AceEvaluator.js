@@ -127,6 +127,7 @@ const AceEvaluator = () => {
   if (showResult) {
     return (
       <Layout>
+
         <div className="text-center mt-8">
           <h1 className="text-2xl font-bold mb-4">
             Academic Content Evaluator
@@ -184,6 +185,7 @@ const AceEvaluator = () => {
 
   return (
     <Layout>
+
       <div className="p-4 flex flex-col gap-y-4">
         <h1 className="text-2xl font-semibold">
           Enter details of resource to be evaluated{" "}
@@ -203,6 +205,7 @@ const AceEvaluator = () => {
           />
         </label>
 
+
         <label className="block mb-2">
           <span className="text-gray-700 font-semibold"> Publication: </span>
           <input
@@ -215,6 +218,7 @@ const AceEvaluator = () => {
             className="block w-full mt-1 p-2 border rounded-md"
           />
         </label>
+
 
         <label>
           <span className="text-gray-700 font-semibold"> Upload file: </span>
@@ -229,7 +233,7 @@ const AceEvaluator = () => {
         <button
           onClick={handleClickUpload}
           type="submit"
-          className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
+          className=" text-white bg-teal-500 rounded-md py-2 px-4 mt-4 m-1"
         >
           Upload
         </button>
@@ -248,12 +252,11 @@ const AceEvaluator = () => {
             className="block w-full mt-1 p-2 border rounded-md"
           />
         </label>
-
         <button
           onClick={handleSubmit}
           className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
         >
-          Show
+          Find Score
         </button>
       </div>
     </Layout>
