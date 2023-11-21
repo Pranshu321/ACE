@@ -9,6 +9,7 @@ import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { v4 } from "uuid";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 // const ProgressBar = ({value, parameter}) => {
 //   return(
@@ -34,6 +35,33 @@ const AceEvaluator = () => {
   const [score, setScore] = useState(50);
 
   const userEmail = auth?.currentUser?.email;
+
+  const handleSubmit = () => {
+    // Do something with the photo, such as upload it to a server
+    // console.log(photo);
+    let custom_file_upload_url = `http://localhost:8080/api/ace-score`;
+
+    let config = {
+      method: "post",
+      url: custom_file_upload_url,
+      data: {
+        author: author,
+        publication: publication,
+        file: fileUrl,
+        fileName: fileUpload.name,
+      },
+    };
+
+    axios
+      .request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+    handleClickShow();
+  };
 
   const handleClickShow = () => {
     const docRef = doc(db, "Users", userEmail);
@@ -87,7 +115,7 @@ const AceEvaluator = () => {
         //console.log(url); // Log the URL here, as it will be available
       })
       .catch((error) => {
-        toast.error("Error in uploading File")
+        toast.error("Error in uploading File");
         console.error("Error uploading file:", error);
       });
   };
@@ -222,7 +250,7 @@ const AceEvaluator = () => {
         </label>
 
         <button
-          onClick={handleClickShow}
+          onClick={handleSubmit}
           className="bg-blue-500 text-white rounded-md py-2 px-4 hover:bg-blue-600 mt-4 m-1"
         >
           Show
