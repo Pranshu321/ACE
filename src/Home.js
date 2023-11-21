@@ -14,9 +14,9 @@ const Home = () => {
         <Route path="/" element={<App />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/dashboard/recent" element={<RecentDocs />} />
+        <Route path="/dashboard/grammar" element={<CheckGrammar />} />
         <Route path="/dashboard/plagrism" element={<PlagrismChecker />} />
         <Route path="/dashboard/evaluator" element={<AceEvaluator />} />
-        <Route path="/dashboard/grammer" element={<CheckGrammar />} />
       </Routes>
     </div>
   );
