@@ -3,7 +3,8 @@ import {useState} from 'react'
 import Layout from '../layout'
 import { storage } from '../../../firebase/firebase';
 import {ref, uploadBytes, getDownloadURL} from 'firebase/storage'
-import { auth } from "../../../firebase/firebase";
+import { auth, db } from "../../../firebase/firebase";
+import { collection, doc, addDoc } from "firebase/firestore"
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { v4 } from 'uuid';
@@ -32,13 +33,31 @@ const AceEvaluator = () => {
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(50)
 
+  const userEmail = auth?.currentUser?.email;
+
   const handleClickShow = () => {
+
+    const docRef = doc(db, 'Users', userEmail)
+    const resourcesCollection = collection(docRef, 'resources');
+
     if(link){
       //create entry in firestore database
-      
+      const resourceData = {link: link, author: author, publication: publication};
+      addDoc(resourcesCollection, resourceData)
+      .then(()=>{
+        console.log('Resource added!');
+      })
+      setLink("")
     }
     if(fileUrl){
       //create entry in firestore database
+      const resourceData = {url: fileUrl, author: author, publication: publication};
+      addDoc(resourcesCollection, resourceData)
+      .then(()=>{
+        console.log('Resource added!');
+      })
+      setFileUpload(null)
+      setFileUrl("")
     }
 
     setShowResult(!showResult);
@@ -49,8 +68,6 @@ const AceEvaluator = () => {
       return;
     }
 
-    const userEmail = auth?.currentUser?.email;
-  
     const fileRef = ref(storage, `${userEmail}/${v4()}.pdf`);
     const contentType = 'application/pdf';
     const metadata = { contentType };
@@ -68,9 +85,13 @@ const AceEvaluator = () => {
         console.error('Error uploading file:', error);
       });
   }
+
+  const handleCheckAnother = () => {
+    setShowResult(!showResult);
+  }
   
   
-  if(!showResult) {
+  if(showResult) {
     return (
       <Layout>
     
@@ -119,7 +140,7 @@ const AceEvaluator = () => {
           </div>
         </div>
 
-        <button onClick={handleClickShow}>Check Another</button>
+        <button onClick={handleCheckAnother}>Check Another</button>
     
       </Layout>
       )
