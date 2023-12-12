@@ -9,6 +9,7 @@ import Footer from "./components/Footer";
 // import PriceTable from "./components/PriceTable";
 // import BottomCTA from "./components/BottomCTA";
 import Testimonials from "./components/Testimonials";
+import Table from "./components/Table";
 
 import("preline");
 
@@ -22,6 +23,8 @@ function App() {
       <Features />
 
       <Benefits/>
+
+      <Table />
 
       <Testimonials/>
 
