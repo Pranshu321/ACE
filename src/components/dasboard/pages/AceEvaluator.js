@@ -43,10 +43,8 @@ const AceEvaluator = () => {
       method: "post",
       url: custom_file_upload_url,
       data: {
-        author: author,
-        publication: publication,
-        file: fileUrl || link,
-        fileName: fileUpload.name,
+        url: fileUrl || link,
+        fileName: fileUpload?.name,
       },
     };
 
@@ -54,6 +52,17 @@ const AceEvaluator = () => {
       .request(config)
       .then((response) => {
         console.log(JSON.stringify(response.data));
+      })
+      .catch((err) => {
+        console.log(err.message);
+      });
+  };
+
+  const checkStatus = () => {
+    axios
+      .get(`https://ace-backend-bk6j.onrender.com/api/status`)
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((err) => {
         console.log(err.message);
@@ -250,7 +259,7 @@ const AceEvaluator = () => {
   return (
     <Layout>
       <div className="p-4 flex flex-col gap-y-4">
-        <h1 className="text-2xl font-semibold">
+        <h1 onClick={checkStatus} className="text-2xl font-semibold">
           Enter details of resource to be evaluated{" "}
         </h1>
 
