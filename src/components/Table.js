@@ -34,11 +34,11 @@ const Table = () => {
     },
   ];
   return (
-    <div id="grade" className="w-full flex flex-col mt-20 justify-center items-center">
+    <div id="grade" className="w-full flex flex-col mt-5 justify-center items-center">
       <h2 className="text-[32px] font-bold text-center sm:text-center">
         Metric Grade Table
       </h2>
-      <div className="overflow-x-auto border-2 rounded-lg p-4 overflow-hidden mt-10 flex w-1/2 justify-center items-center flex-col mx-10">
+      <div className="overflow-x-auto border-2 rounded-lg p-4 overflow-hidden mt-2 flex w-1/2 justify-center items-center flex-col mx-10">
         <table align="center" className="table">
           <thead className="text-xl font-semibold text-teal-600">
             <tr>

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "./layout";
 import { auth } from "../../firebase/firebase";
 import axios from "axios";
+import Table from "../Table";
 
 const Dashboard = () => {
   const [data, setdata] = useState([]);
@@ -15,7 +16,8 @@ const Dashboard = () => {
     setdata(res.data);
   };
   useEffect(() => {
-    getFact();
+    // getFact();
+    console.log("Working");
   }, []);
   return (
     <>
@@ -28,9 +30,9 @@ const Dashboard = () => {
             </span>
           </div>
           <div className="mockup-window w-full mt-10 h-[75vh] border bg-base-300">
-            <div className="flex justify-center h-full px-4 py-16 bg-base-200">
-              <div className="overflow-y-scroll  flex flex-col gap-y-6">
-                <div className="text-3xl font-semibold text-gray-700">
+            <div className="flex justify-center h-full px-4 bg-base-200">
+              <div className="w-full -mt-3">
+                {/* <div className="text-3xl font-semibold text-gray-700">
                   {data[0]?.title}
                 </div>
                 <div className="text-5xl tracking-wider leading-normal font-semibold text-gray-700">
@@ -51,7 +53,8 @@ const Dashboard = () => {
                       {data[0]?.answer}
                     </span>
                   </div>
-                )}
+                )} */}
+                <Table />
               </div>
             </div>
           </div>
