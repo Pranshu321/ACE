@@ -32,11 +32,58 @@ const AceEvaluator = () => {
   const [fileUrl, setFileUrl] = useState("");
 
   const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(50);
+  const [result, setResult] = useState({});
+  const [colour, setColour] = useState('rgba(2, 137, 122)')
 
   const userEmail = auth?.currentUser?.email;
 
-  const handleSubmit = () => {
+  //  this is for testing only
+  //  const checkStatus = () => {
+  //   axios
+  //     .get(`https://ace-backend-bk6j.onrender.com/api/status`)
+  //     .then((response) => {
+  //       setResult(response.data);
+  //     })
+  //     .catch((err) => {
+  //       console.log(err.message);
+  //     });
+  // };
+
+  const handleClickShow = () => {
+
+    setLoading(true);
+
+    const docRef = doc(db, "Users", userEmail);
+    const resourcesCollection = collection(docRef, "resources");
+
+    if (link) {
+      //create entry in firestore database
+      const resourceData = {
+        link: link,
+        author: author,
+        publication: publication,
+      };
+      addDoc(resourcesCollection, resourceData).then(() => {
+        console.log("Resource added!");
+      });
+
+      setLink("");
+    }
+    if (fileUrl) {
+      //create entry in firestore database
+      const resourceData = {
+        url: fileUrl,
+        author: author,
+        publication: publication,
+      };
+      addDoc(resourcesCollection, resourceData).then(() => {
+        console.log("Resource added!");
+      });
+
+      setFileUpload(null);
+      setFileUrl("");
+    }
+
     let custom_file_upload_url = `https://ace-backend-bk6j.onrender.com/api/ace-score`;
 
     let config = {
@@ -51,56 +98,29 @@ const AceEvaluator = () => {
     axios
       .request(config)
       .then((response) => {
-        console.log(JSON.stringify(response.data));
-      })
-      .catch((err) => {
-        console.log(err.message);
-      });
-  };
-
-  const checkStatus = () => {
-    axios
-      .get(`https://ace-backend-bk6j.onrender.com/api/status`)
-      .then((response) => {
         console.log(response.data);
+        setResult(response.data);
+        let val = response.data.score;
+        if(val === 'O')
+        setColour('rgba(0,126,126)')
+        else if(val === 'A')
+        setColour('rgba(48,152,152)')
+        else if(val === 'B')
+        setColour('rgba(255,159,0)')
+        else if(val === 'C')
+        setColour('rgba(244,99,30)')
+        else if(val === 'D')
+        setColour('rgba(203,4,31)')
+        else if(val === 'E')
+        setColour('rgba(173,0,0)')
+        setLoading(false)
+        setShowResult(!showResult)
       })
       .catch((err) => {
         console.log(err.message);
       });
-  };
 
-  const handleClickShow = () => {
-    const docRef = doc(db, "Users", userEmail);
-    const resourcesCollection = collection(docRef, "resources");
-
-    if (link) {
-      //create entry in firestore database
-      const resourceData = {
-        link: link,
-        author: author,
-        publication: publication,
-      };
-      addDoc(resourcesCollection, resourceData).then(() => {
-        console.log("Resource added!");
-      });
-      handleSubmit();
-      setLink("");
-    }
-    if (fileUrl) {
-      //create entry in firestore database
-      const resourceData = {
-        url: fileUrl,
-        author: author,
-        publication: publication,
-      };
-      addDoc(resourcesCollection, resourceData).then(() => {
-        console.log("Resource added!");
-      });
-      handleSubmit();
-      setFileUpload(null);
-      setFileUrl("");
-    }
-    setShowResult(!showResult);
+    // setShowResult(!showResult);
   };
 
   const handleClickUpload = () => {
@@ -129,9 +149,19 @@ const AceEvaluator = () => {
 
   const handleCheckAnother = () => {
     setShowResult(!showResult);
+    setResult({})
   };
 
-  if (showResult) {
+  if(loading){
+    return(
+      <Layout>
+        <h1>Loading....</h1>
+      </Layout>
+      
+    )
+  }
+
+  if (showResult && !loading) {
     return (
       <Layout>
         <div className="text-center mt-8">
@@ -160,7 +190,7 @@ const AceEvaluator = () => {
                   </svg>
                 </div>
                 <div className="stat-title">Flesch-Kincaid Score</div>
-                <div className="stat-value">16.4</div>
+                <div className="stat-value">{result.fleschScore}</div>
               </div>
 
               <div className="stat ">
@@ -180,7 +210,7 @@ const AceEvaluator = () => {
                   </svg>
                 </div>
                 <div className="stat-title">Reference Count</div>
-                <div className="stat-value">9</div>
+                <div className="stat-value">{result.refCount}</div>
               </div>
 
               <div className="stat ">
@@ -199,25 +229,25 @@ const AceEvaluator = () => {
                     ></path>
                   </svg>
                 </div>
-                <div className="stat-title">Error count</div>
-                <div className="stat-value">22</div>
+                <div className="stat-title">Vocabulary size</div>
+                <div className="stat-value">{result.vocabSize}</div>
               </div>
             </div>
           </div>
 
           <div className="flex flex-col flex-1">
-            <h2 className="text-lg font-medium mb-2">Total rating :</h2>
+            <h2 className="text-lg font-medium mb-2">Resulting Grade :</h2>
             <div className="w-1/2">
               <CircularProgressbar
-                value={score}
-                text={`${score}%`}
+                value={100}
+                text={`${result.score}`}
                 styles={{
                   // Customize the root svg element
                   root: {},
                   // Customize the path, i.e. the "completed progress"
                   path: {
                     // Path color
-                    stroke: `rgba(2, 137, 122, ${score / 100})`,
+                    stroke: `${colour}`, //this is what has to be changed
                     // Whether to use rounded or flat corners on the ends - can use 'butt' or 'round'
                     strokeLinecap: "butt",
                     // Customize transition animation
@@ -241,7 +271,7 @@ const AceEvaluator = () => {
               />
             </div>
             <h1 className="text-xl mt-4">
-              The total rating of the document is: {score / 10}/10
+              The total rating of the document is: {result.score}
             </h1>
           </div>
         </div>
@@ -259,7 +289,7 @@ const AceEvaluator = () => {
   return (
     <Layout>
       <div className="p-4 flex flex-col gap-y-4">
-        <h1 onClick={checkStatus} className="text-2xl font-semibold">
+        <h1 className="text-2xl font-semibold">
           Enter details of resource to be evaluated{" "}
         </h1>
 
