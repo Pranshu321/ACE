@@ -50,7 +50,7 @@ const RecentDocs = () => {
     <Layout>
       <div className="flex flex-wrap gap-5 justify-evenly">
         {article.length > 0 ? (
-          article.map((item, idx) => {
+          article.slice(0,10).map((item, idx) => {
             return (
               <Cards
                 key={idx}
