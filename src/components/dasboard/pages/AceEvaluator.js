@@ -33,7 +33,7 @@ const AceEvaluator = () => {
 
   const [showResult, setShowResult] = useState(false);
   const [result, setResult] = useState({});
-  const [colour, setColour] = useState('rgba(2, 137, 122)')
+  const [colour, setColour] = useState("rgba(2, 137, 122)");
 
   const userEmail = auth?.currentUser?.email;
 
@@ -50,7 +50,6 @@ const AceEvaluator = () => {
   // };
 
   const handleClickShow = () => {
-
     setLoading(true);
 
     const docRef = doc(db, "Users", userEmail);
@@ -101,20 +100,14 @@ const AceEvaluator = () => {
         console.log(response.data);
         setResult(response.data);
         let val = response.data.score;
-        if(val === 'O')
-        setColour('rgba(0,126,126)')
-        else if(val === 'A')
-        setColour('rgba(48,152,152)')
-        else if(val === 'B')
-        setColour('rgba(255,159,0)')
-        else if(val === 'C')
-        setColour('rgba(244,99,30)')
-        else if(val === 'D')
-        setColour('rgba(203,4,31)')
-        else if(val === 'E')
-        setColour('rgba(173,0,0)')
-        setLoading(false)
-        setShowResult(!showResult)
+        if (val === "O") setColour("rgba(0,126,126)");
+        else if (val === "A") setColour("rgba(48,152,152)");
+        else if (val === "B") setColour("rgba(255,159,0)");
+        else if (val === "C") setColour("rgba(244,99,30)");
+        else if (val === "D") setColour("rgba(203,4,31)");
+        else if (val === "E") setColour("rgba(173,0,0)");
+        setLoading(false);
+        setShowResult(!showResult);
       })
       .catch((err) => {
         console.log(err.message);
@@ -149,16 +142,20 @@ const AceEvaluator = () => {
 
   const handleCheckAnother = () => {
     setShowResult(!showResult);
-    setResult({})
+    setResult({});
   };
 
-  if(loading){
-    return(
+  if (loading) {
+    return (
       <Layout>
-        <h1>Loading....</h1>
+        <div className="flex justify-center">
+          <span
+            className="loading text-teal-500 loading-infinity text-3xl loading-lg"
+            style={{ width: "13rem" }}
+          ></span>
+        </div>
       </Layout>
-      
-    )
+    );
   }
 
   if (showResult && !loading) {
@@ -236,7 +233,7 @@ const AceEvaluator = () => {
           </div>
 
           <div className="flex flex-col flex-1">
-            <h2 className="text-lg font-medium mb-2">Resulting Grade :</h2>
+            <h2 className="text-2xl pl-[5.2rem] font-semibold mb-2">ACE GRADE</h2>
             <div className="w-1/2">
               <CircularProgressbar
                 value={100}
@@ -264,14 +261,15 @@ const AceEvaluator = () => {
                   text: {
                     // Text color
                     fill: "#000",
+                    fontWeight: "600",
                     // Text size
-                    fontSize: "16px",
+                    fontSize: "30px",
                   },
                 }}
               />
             </div>
-            <h1 className="text-xl mt-4">
-              The total rating of the document is: {result.score}
+            <h1 className="text-xl font-semibold mt-4">
+          The total rating of the document is: <span className="text-teal-500 text-2xl"> {result.score} </span>
             </h1>
           </div>
         </div>
